@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choi Fung Automation | AI-Powered Chemical Trading</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #ec4899, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .workflow-node {
+      transition: all 0.3s ease;
+    }
+    .workflow-node:hover {
+      transform: scale(1.05);
+    }
+    .workflow-node.active {
+      animation: pulse 1s ease-in-out;
+      border-color: #ec4899;
+      background: rgba(236, 72, 153, 0.15);
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: slideIn 0.5s ease-out forwards;
+    }
+    .flow-line {
+      background: linear-gradient(90deg, #f9a8d4, #ec4899);
+      animation: flowPulse 2s ease-in-out infinite;
+    }
+    @keyframes flowPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .demo-output {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+  
+  <!-- Hero Section -->
+  <section class="min-h-[60vh] flex items-center justify-center px-4 py-12 bg-gradient-to-b from-pink-50 to-white">
+    <div class="max-w-3xl text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100 border border-pink-200 mb-6">
+        <span class="text-2xl">🧪</span>
+        <span class="text-sm font-medium text-pink-600">Chemical Trading Automation</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+        <span class="gradient-text">Automate Your</span><br>
+        Chemical Trading Business
+      </h1>
+      <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Quote automation, inventory tracking, WhatsApp integration — everything works 24/7 while you focus on growing your business.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#demos" class="px-6 py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors shadow-lg shadow-pink-200">
+          See Live Demos
+        </a>
+        <a href="#pricing" class="px-6 py-3 bg-white text-pink-600 font-semibold rounded-xl border-2 border-pink-200 hover:border-pink-400 transition-colors">
+          Get Started →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demos Section -->
+  <section id="demos" class="py-16 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">Live Automation Demos</h2>
+      <p class="text-gray-600 text-center mb-12">Click "Run Demo" to see each workflow in action</p>
+      
+      <!-- Demo Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Quote Automation Demo -->
+        <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
+          <div class="p-6 border-b border-pink-50">
+            <div class="flex items justify-between mb-2">
+              <h3 class="text-xl font-bold">📦 Quote Automation</h3>
+              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full">Phase 1</span>
+            </div>
+            <p class="text-gray-600 text-sm">Customer inquiry → Auto-calculate pricing → Generate PDF quote → Email</p>
+          </div>
+          
+          <!-- Workflow Visualization -->
+          <div class="p-6 bg-gradient-to-r from-pink-50 to-white">
+            <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2" id="quote-flow">
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-pink-200 bg-white" data-step="1">
+                <span class="text-2xl mb-1">📧</span>
+                <span class="text-xs text-gray-600 text-center">Email Inquiry</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="2">
+                <span class="text-2xl mb-1">🧮</span>
+                <span class="text-xs text-gray-600 text-center">Calculate Price</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="3">
+                <span class="text-2xl mb-1">📄</span>
+                <span class="text-xs text-gray-600 text-center">Generate PDF</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="4">
+                <span class="text-2xl mb-1">✉️</span>
+                <span class="text-xs text-gray-600 text-center">Send Quote</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Demo Output -->
+          <div class="p-4 bg-gray-900 demo-output text-green-400 min-h-[120px]" id="quote-output">
+            <div class="text-gray-500">Click "Run Demo" to see output...</div>
+          </div>
+          
+          <div class="p-4 border-t border-pink-50">
+            <button onclick="runQuoteDemo()" class="w-full py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
+              <span>▶</span> Run Demo
+            </button>
+          </div>
+        </div>
+
+        <!-- Inventory Alert Demo -->
+        <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
+          <div class="p-6 border-b border-pink-50">
+            <div class="flex items justify-between mb-2">
+              <h3 class="text-xl font-bold">📊 Inventory Alerts</h3>
+              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full">Phase 2</span>
+            </div>
+            <p class="text-gray-600 text-sm">Stock check → Low inventory detected → Alert procurement → Auto PO</p>
+          </div>
+          
+          <div class="p-6 bg-gradient-to-r from-pink-50 to-white">
+            <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2" id="inventory-flow">
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-pink-200 bg-white" data-step="1">
+                <span class="text-2xl mb-1">⏰</span>
+                <span class="text-xs text-gray-600 text-center">Daily Check</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="2">
+                <span class="text-2xl mb-1">🔍</span>
+                <span class="text-xs text-gray-600 text-center">Scan Stock</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="3">
+                <span class="text-2xl mb-1">⚠️</span>
+                <span class="text-xs text-gray-600 text-center">Low Alert</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="4">
+                <span class="text-2xl mb-1">📤</span>
+                <span class="text-xs text-gray-600 text-center">Auto PO</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-4 bg-gray-900 demo-output text-green-400 min-h-[120px]" id="inventory-output">
+            <div class="text-gray-500">Click "Run Demo" to see output...</div>
+          </div>
+          
+          <div class="p-4 border-t border-pink-50">
+            <button onclick="runInventoryDemo()" class="w-full py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
+              <span>▶</span> Run Demo
+            </button>
+          </div>
+        </div>
+
+        <!-- WhatsApp Response Demo -->
+        <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
+          <div class="p-6 border-b border-pink-50">
+            <div class="flex items justify-between mb-2">
+              <h3 class="text-xl font-bold">💬 WhatsApp Auto-Reply</h3>
+              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full">Phase 3</span>
+            </div>
+            <p class="text-gray-600 text-sm">Customer message → AI determines intent → Auto-reply or route to team</p>
+          </div>
+          
+          <div class="p-6 bg-gradient-to-r from-pink-50 to-white">
+            <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2" id="whatsapp-flow">
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-pink-200 bg-white" data-step="1">
+                <span class="text-2xl mb-1">📲</span>
+                <span class="text-xs text-gray-600 text-center">Message In</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="2">
+                <span class="text-2xl mb-1">🤖</span>
+                <span class="text-xs text-gray-600 text-center">AI Analysis</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="3">
+                <span class="text-2xl mb-1">📝</span>
+                <span class="text-xs text-gray-600 text-center">Draft Reply</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="4">
+                <span class="text-2xl mb-1">✅</span>
+                <span class="text-xs text-gray-600 text-center">Send Reply</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-4 bg-gray-900 demo-output text-green-400 min-h-[120px]" id="whatsapp-output">
+            <div class="text-gray-500">Click "Run Demo" to see output...</div>
+          </div>
+          
+          <div class="p-4 border-t border-pink-50">
+            <button onclick="runWhatsAppDemo()" class="w-full py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
+              <span>▶</span> Run Demo
+            </button>
+          </div>
+        </div>
+
+        <!-- Compliance Demo -->
+        <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
+          <div class="p-6 border-b border-pink-50">
+            <div class="flex items justify-between mb-2">
+              <h3 class="text-xl font-bold">📋 Compliance Automation</h3>
+              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full">Phase 4</span>
+            </div>
+            <p class="text-gray-600 text-sm">Shipment created → Auto-attach SDS → Generate DG docs → Email to logistics</p>
+          </div>
+          
+          <div class="p-6 bg-gradient-to-r from-pink-50 to-white">
+            <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2" id="compliance-flow">
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-pink-200 bg-white" data-step="1">
+                <span class="text-2xl mb-1">📦</span>
+                <span class="text-xs text-gray-600 text-center">New Shipment</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="2">
+                <span class="text-2xl mb-1">📑</span>
+                <span class="text-xs text-gray-600 text-center">Find SDS</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="3">
+                <span class="text-2xl mb-1">⚠️</span>
+                <span class="text-xs text-gray-600 text-center">DG Check</span>
+              </div>
+              <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
+              <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="4">
+                <span class="text-2xl mb-1">✅</span>
+                <span class="text-xs text-gray-600 text-center">Send Docs</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-4 bg-gray-900 demo-output text-green-400 min-h-[120px]" id="compliance-output">
+            <div class="text-gray-500">Click "Run Demo" to see output...</div>
+          </div>
+          
+          <div class="p-4 border-t border-pink-50">
+            <button onclick="runComplianceDemo()" class="w-full py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
+              <span>▶</span> Run Demo
+            </button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-16 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Investment Options</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Phase 1 -->
+        <div class="p-6 rounded-2xl border-2 border-pink-200 bg-gradient-to-br from-pink-50 to-white">
+          <div class="text-sm font-semibold text-pink-600 mb-2">Recommended Start</div>
+          <h3 class="text-2xl font-bold mb-2">Quote Automation</h3>
+          <div class="text-4xl font-extrabold gradient-text mb-4">HK$40,000</div>
+          <ul class="space-y-2 mb-6 text-sm text-gray-600">
+            <li>✅ Customer inquiry portal</li>
+            <li>✅ Auto pricing calculation</li>
+            <li>✅ PDF quote generation</li>
+            <li>✅ Email delivery system</li>
+            <li>✅ 24/7 operation</li>
+          </ul>
+          <div class="text-xs text-gray-500">Timeline: 4-6 weeks</div>
+        </div>
+        
+        <!-- Full Package -->
+        <div class="p-6 rounded-2xl border-2 border-pink-500 bg-pink-500 text-white relative overflow-hidden">
+          <div class="absolute top-4 right-4 px-3 py-1 bg-white text-pink-600 text-xs font-bold rounded-full">BEST VALUE</div>
+          <h3 class="text-2xl font-bold mb-2">Full Package</h3>
+          <div class="text-4xl font-extrabold mb-4">HK$150,000</div>
+          <ul class="space-y-2 mb-6 text-sm text-pink-100">
+            <li>✅ Phase 1: Quote Automation</li>
+            <li>✅ Phase 2: Inventory Dashboard</li>
+            <li>✅ Phase 3: WhatsApp/WeChat</li>
+            <li>✅ Phase 4: Compliance Docs</li>
+            <li>✅ Priority support</li>
+          </ul>
+          <div class="text-xs text-pink-200">Timeline: 16-22 weeks</div>
+        </div>
+      </div>
+      
+      <div class="mt-8 text-center">
+        <a href="https://wa.me/85298282172?text=Hi%2C%20I%27m%20interested%20in%20automation%20for%20Choi%20Fung" class="inline-block px-8 py-4 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors shadow-lg shadow-pink-200">
+          Contact Us on WhatsApp →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 border-t border-pink-100 bg-gray-50">
+    <div class="max-w-4xl mx-auto text-center text-gray-600 text-sm">
+      <p class="font-semibold text-gray-900 mb-1">Language Services International (PET) Ltd.</p>
+      <p>Business Registration: 61683087 | Operating since 2015</p>
+      <p class="mt-2">📞 +852 9828 2172 | ✉️ lsistreamai@gmail.com</p>
+    </div>
+  </footer>
+
+  <script>
+    // Demo simulation functions
+    async function animateFlow(flowId, steps) {
+      const flow = document.getElementById(flowId);
+      const nodes = flow.querySelectorAll('.workflow-node');
+      
+      // Reset all nodes
+      nodes.forEach(n => n.classList.remove('active'));
+      
+      // Animate each step
+      for (let i = 0; i < steps.length; i++) {
+        nodes[i].classList.add('active');
+        await sleep(800);
+      }
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function runQuoteDemo() {
+      const output = document.getElementById('quote-output');
+      output.innerHTML = '<span class="text-pink-400">🚀 Starting Quote Automation...</span>';
+      
+      await animateFlow('quote-flow', [1,2,3,4]);
+      
+      const demo = [
+        '<span class="text-gray-400">[09:15:32]</span> <span class="text-cyan-400">📨 New inquiry received</span>',
+        '<span class="text-gray-400">[09:15:32]</span> <span class="text-white">Customer: ABC Manufacturing Co.</span>',
+        '<span class="text-gray-400">[09:15:32]</span> <span class="text-white">Product: Acetone (99.5% purity)</span>',
+        '<span class="text-gray-400">[09:15:32]</span> <span class="text-white">Quantity: 500L</span>',
+        '<span class="text-gray-400">[09:15:32]</span> <span class="text-white">Delivery: Shenzhen, China</span>',
+        '',
+        '<span class="text-gray-400">[09:15:33]</span> <span class="text-yellow-400">🧮 Calculating price...</span>',
+        '<span class="text-gray-400">[09:15:33]</span> <span class="text-white">Base price: HK$12,500</span>',
+        '<span class="text-gray-400">[09:15:33]</span> <span class="text-white">Exchange rate (RMB/HKD): 1.08</span>',
+        '<span class="text-gray-400">[09:15:33]</span> <span class="text-white">Cross-border fee: HK$800</span>',
+        '<span class="text-gray-400">[09:15:33]</span> <span class="text-green-400">✅ Total: HK$14,300</span>',
+        '',
+        '<span class="text-gray-400">[09:15:34]</span> <span class="text-purple-400">📄 Generating quote PDF...</span>',
+        '<span class="text-gray-400">[09:15:34]</span> <span class="text-green-400">✅ Quote #Q-2026-0542 created</span>',
+        '',
+        '<span class="text-gray-400">[09:15:35]</span> <span class="text-cyan-400">✉️ Sending to purchasing@abcmfg.com</span>',
+        '<span class="text-gray-400">[09:15:35]</span> <span class="text-green-400">✅ Quote sent! Response time: 3 seconds</span>',
+        '',
+        '<span class="text-pink-400">💾 Saved to CRM: ABC Manufacturing Co. | Quote #Q-2026-0542</span>'
+      ];
+      
+      for (const line of demo) {
+        output.innerHTML += '<br>' + line;
+        await sleep(150);
+      }
+    }
+
+    async function runInventoryDemo() {
+      const output = document.getElementById('inventory-output');
+      output.innerHTML = '<span class="text-pink-400">🚀 Starting Inventory Check...</span>';
+      
+      await animateFlow('inventory-flow', [1,2,3,4]);
+      
+      const demo = [
+        '<span class="text-gray-400">[08:00:00]</span> <span class="text-cyan-400">⏰ Scheduled inventory scan started</span>',
+        '<span class="text-gray-400">[08:00:01]</span> <span class="text-white">Checking 156 SKUs across 3 warehouses...</span>',
+        '',
+        '<span class="text-gray-400">[08:00:12]</span> <span class="text-yellow-400">⚠️ LOW STOCK ALERT:</span>',
+        '<span class="text-gray-400">[08:00:12]</span> <span class="text-white">  - Acetone: 45L remaining (threshold: 100L)</span>',
+        '<span class="text-gray-400">[08:00:12]</span> <span class="text-white">  - Methanol: 20L remaining (threshold: 50L)</span>',
+        '<span class="text-gray-400">[08:00:12]</span> <span class="text-white">  - Toluene: 8L remaining (threshold: 30L)</span>',
+        '',
+        '<span class="text-gray-400">[08:00:13]</span> <span class="text-purple-400">📤 Generating purchase orders...</span>',
+        '<span class="text-gray-400">[08:00:13]</span> <span class="text-green-400">✅ PO-4821: Acetone 200L → ChemSupply HK</span>',
+        '<span class="text-gray-400">[08:00:13]</span> <span class="text-green-400">✅ PO-4822: Methanol 100L → ChemSupply HK</span>',
+        '<span class="text-gray-400">[08:00:13]</span> <span class="text-green-400">✅ PO-4823: Toluene 50L → SinoChem Shenzhen</span>',
+        '',
+        '<span class="text-gray-400">[08:00:14]</span> <span class="text-cyan-400">📧 Notifications sent to:</span>',
+        '<span class="text-gray-400">[08:00:14]</span> <span class="text-white">  - procurement@choi-fung.com</span>',
+        '<span class="text-gray-400">[08:00:14]</span> <span class="text-white">  - warehouse@choi-fung.com</span>',
+        '',
+        '<span class="text-pink-400">⏱️ Total time: 14 seconds | Status: ✅ Complete</span>'
+      ];
+      
+      for (const line of demo) {
+        output.innerHTML += '<br>' + line;
+        await sleep(150);
+      }
+    }
+
+    async function runWhatsAppDemo() {
+      const output = document.getElementById('whatsapp-output');
+      output.innerHTML = '<span class="text-pink-400">🚀 WhatsApp Auto-Reply Demo...</span>';
+      
+      await animateFlow('whatsapp-flow', [1,2,3,4]);
+      
+      const demo = [
+        '<span class="text-gray-400">[14:23:05]</span> <span class="text-cyan-400">📲 WhatsApp message received</span>',
+        '<span class="text-gray-400">[14:23:05]</span> <span class="text-white">From: +86 138-xxxx-5678</span>',
+        '<span class="text-gray-400">[14:23:05]</span> <span class="text-yellow-400">Message:</span>',
+        '<span class="text-white">"你好，请问甲醛现在多少钱一升？"</span>',
+        '',
+        '<span class="text-gray-400">[14:23:06]</span> <span class="text-purple-400">🤖 AI analyzing intent...</span>',
+        '<span class="text-gray-400">[14:23:06]</span> <span class="text-green-400">✅ Intent: PRICE_INQUIRY</span>',
+        '<span class="text-gray-400">[14:23:06]</span> <span class="text-green-400">✅ Product: 甲醛 (Formaldehyde)</span>',
+        '<span class="text-gray-400">[14:23:06]</span> <span class="text-green-400">✅ Language: Chinese (Simplified)</span>',
+        '',
+        '<span class="text-gray-400">[14:23:07]</span> <span class="text-yellow-400">📝 Drafting reply...</span>',
+        '',
+        '<span class="text-gray-400">[14:23:08]</span> <span class="text-green-400">✉️ Auto-reply sent:</span>',
+        '<span class="text-white">"您好！甲醛目前价格为：</span>',
+        '<span class="text-white">• 纯度37%: ¥85/升</span>',
+        '<span class="text-white">• 纯度50%: ¥120/升</span>',
+        '<span class="text-white">批量购买（>100升）可享9折优惠。</span>',
+        '<span class="text-white">需要报价单请回复您的公司名和地址。"</span>',
+        '',
+        '<span class="text-pink-400">⏱️ Response time: 3 seconds | Customer satisfied: ✓</span>'
+      ];
+      
+      for (const line of demo) {
+        output.innerHTML += '<br>' + line;
+        await sleep(150);
+      }
+    }
+
+    async function runComplianceDemo() {
+      const output = document.getElementById('compliance-output');
+      output.innerHTML = '<span class="text-pink-400">🚀 Compliance Automation Demo...</span>';
+      
+      await animateFlow('compliance-flow', [1,2,3,4]);
+      
+      const demo = [
+        '<span class="text-gray-400">[10:45:00]</span> <span class="text-cyan-400">📦 New shipment created</span>',
+        '<span class="text-gray-400">[10:45:00]</span> <span class="text-white">Shipment ID: SH-2026-8912</span>',
+        '<span class="text-gray-400">[10:45:00]</span> <span class="text-white">Products: Acetone (200L), Methanol (100L)</span>',
+        '<span class="text-gray-400">[10:45:00]</span> <span class="text-white">Route: Hong Kong → Shenzhen</span>',
+        '',
+        '<span class="text-gray-400">[10:45:01]</span> <span class="text-yellow-400">📑 Fetching Safety Data Sheets...</span>',
+        '<span class="text-gray-400">[10:45:01]</span> <span class="text-green-400">✅ SDS attached: Acetone.pdf</span>',
+        '<span class="text-gray-400">[10:45:01]</span> <span class="text-green-400">✅ SDS attached: Methanol.pdf</span>',
+        '',
+        '<span class="text-gray-400">[10:45:02]</span> <span class="text-yellow-400">⚠️ Checking DG classification...</span>',
+        '<span class="text-gray-400">[10:45:02]</span> <span class="text-white">Acetone: Class 3 Flammable Liquid</span>',
+        '<span class="text-gray-400">[10:45:02]</span> <span class="text-white">Methanol: Class 3 Flammable Liquid (Toxic)</span>',
+        '',
+        '<span class="text-gray-400">[10:45:03]</span> <span class="text-purple-400">📄 Generating DG Declaration...</span>',
+        '<span class="text-gray-400">[10:45:03]</span> <span class="text-green-400">✅ DG Declaration Form created</span>',
+        '<span class="text-gray-400">[10:45:03]</span> <span class="text-green-400">✅ Export license #EL-2026-4421 attached</span>',
+        '',
+        '<span class="text-gray-400">[10:45:04]</span> <span class="text-cyan-400">✉️ Documents sent to:</span>',
+        '<span class="text-gray-400">[10:45:04]</span> <span class="text-white">  - logistics@choi-fung.com</span>',
+        '<span class="text-gray-400">[10:45:04]</span> <span class="text-white">  - customs@choi-fung.com</span>',
+        '<span class="text-gray-400">[10:45:04]</span> <span class="text-white">  - Driver (WhatsApp)</span>',
+        '',
+        '<span class="text-pink-400">⏱️ Total time: 4 seconds | Compliance: ✅ Complete</span>'
+      ];
+      
+      for (const line of demo) {
+        output.innerHTML += '<br>' + line;
+        await sleep(150);
+      }
+    }
+  </script>
+</body>
+</html>
