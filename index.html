@@ -6,9 +6,9 @@
   <title>Choi Fung Automation | Beauty • Health • Household</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { font-family: 'Inter', sans-serif; }
+    * { font-family: 'Inter', 'Noto Sans SC', sans-serif; }
     .gradient-text {
       background: linear-gradient(135deg, #ec4899, #f472b6);
       -webkit-background-clip: text;
@@ -29,13 +29,6 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.1); }
     }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-in {
-      animation: slideIn 0.5s ease-out forwards;
-    }
     .flow-line {
       background: linear-gradient(90deg, #f9a8d4, #ec4899);
       animation: flowPulse 2s ease-in-out infinite;
@@ -48,29 +41,44 @@
       font-family: 'Monaco', 'Menlo', monospace;
       font-size: 12px;
     }
+    .lang-btn {
+      transition: all 0.2s ease;
+    }
+    .lang-btn.active {
+      background: linear-gradient(135deg, #ec4899, #f472b6);
+      color: white;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900">
   
+  <!-- Language Toggle -->
+  <div class="fixed top-4 right-4 z-50">
+    <div class="bg-white rounded-full shadow-lg border border-pink-100 flex overflow-hidden">
+      <button onclick="setLang('en')" class="lang-btn active px-4 py-2 text-sm font-semibold" data-lang="en">EN</button>
+      <button onclick="setLang('zh')" class="lang-btn px-4 py-2 text-sm font-semibold text-gray-600" data-lang="zh">中文</button>
+    </div>
+  </div>
+
   <!-- Hero Section -->
   <section class="min-h-[60vh] flex items-center justify-center px-4 py-12 bg-gradient-to-b from-pink-50 to-white">
     <div class="max-w-3xl text-center">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100 border border-pink-200 mb-6">
         <span class="text-2xl">🛍️</span>
-        <span class="text-sm font-medium text-pink-600">Beauty • Health • Household</span>
+        <span class="text-sm font-medium text-pink-600" data-en="Beauty • Health • Household" data-zh="美容 • 健康 • 家居">Beauty • Health • Household</span>
       </div>
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-        <span class="gradient-text">Automate Your</span><br>
-        Retail Operations
+        <span class="gradient-text" data-en="Automate Your" data-zh="自動化您的">Automate Your</span><br>
+        <span data-en="Retail Operations" data-zh="零售業務" class="text-gray-900">Retail Operations</span>
       </h1>
-      <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+      <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto" data-en="Order processing, inventory sync, customer notifications — everything works 24/7 while you focus on growing your business." data-zh="訂單處理、庫存同步、客戶通知 — 全天候自動運作，讓您專注拓展業務。">
         Order processing, inventory sync, customer notifications — everything works 24/7 while you focus on growing your business.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#demos" class="px-6 py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors shadow-lg shadow-pink-200">
+        <a href="#demos" class="px-6 py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors shadow-lg shadow-pink-200" data-en="See Live Demos" data-zh="查看演示">
           See Live Demos
         </a>
-        <a href="https://www.choi-fung.com" target="_blank" class="px-6 py-3 bg-white text-pink-600 font-semibold rounded-xl border-2 border-pink-200 hover:border-pink-400 transition-colors">
+        <a href="https://www.choi-fung.com" target="_blank" class="px-6 py-3 bg-white text-pink-600 font-semibold rounded-xl border-2 border-pink-200 hover:border-pink-400 transition-colors" data-en="Visit Our Store →" data-zh="瀏覽網店 →">
           Visit Our Store →
         </a>
       </div>
@@ -80,8 +88,8 @@
   <!-- Live Demos Section -->
   <section id="demos" class="py-16 px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-4">Live Automation Demos</h2>
-      <p class="text-gray-600 text-center mb-12">Click "Run Demo" to see each workflow in action</p>
+      <h2 class="text-3xl font-bold text-center mb-4" data-en="Live Automation Demos" data-zh="自動化演示">Live Automation Demos</h2>
+      <p class="text-gray-600 text-center mb-12" data-en='Click "Run Demo" to see each workflow in action' data-zh='點擊「運行演示」查看工作流程'>Click "Run Demo" to see each workflow in action</p>
       
       <!-- Demo Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -90,45 +98,43 @@
         <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
           <div class="p-6 border-b border-pink-50">
             <div class="flex items justify-between mb-2">
-              <h3 class="text-xl font-bold">📦 Order Processing</h3>
-              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full">Orders</span>
+              <h3 class="text-xl font-bold" data-en="📦 Order Processing" data-zh="📦 訂單處理">📦 Order Processing</h3>
+              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full" data-en="Orders" data-zh="訂單">Orders</span>
             </div>
-            <p class="text-gray-600 text-sm">New order → Check inventory → Generate invoice → Notify warehouse</p>
+            <p class="text-gray-600 text-sm" data-en="New order → Check inventory → Generate invoice → Notify warehouse" data-zh="新訂單 → 檢查庫存 → 生成發票 → 通知倉庫">New order → Check inventory → Generate invoice → Notify warehouse</p>
           </div>
           
-          <!-- Workflow Visualization -->
           <div class="p-6 bg-gradient-to-r from-pink-50 to-white">
             <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2" id="order-flow">
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-pink-200 bg-white" data-step="1">
                 <span class="text-2xl mb-1">🛒</span>
-                <span class="text-xs text-gray-600 text-center">New Order</span>
+                <span class="text-xs text-gray-600 text-center" data-en="New Order" data-zh="新訂單">New Order</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="2">
                 <span class="text-2xl mb-1">📋</span>
-                <span class="text-xs text-gray-600 text-center">Check Stock</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Check Stock" data-zh="檢查庫存">Check Stock</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="3">
                 <span class="text-2xl mb-1">📄</span>
-                <span class="text-xs text-gray-600 text-center">Invoice</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Invoice" data-zh="發票">Invoice</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="4">
                 <span class="text-2xl mb-1">📦</span>
-                <span class="text-xs text-gray-600 text-center">Ship</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Ship" data-zh="發貨">Ship</span>
               </div>
             </div>
           </div>
           
-          <!-- Demo Output -->
           <div class="p-4 bg-gray-900 demo-output text-green-400 min-h-[120px]" id="order-output">
-            <div class="text-gray-500">Click "Run Demo" to see output...</div>
+            <div class="text-gray-500" data-en="Click Run Demo to see output..." data-zh="點擊「運行演示」查看輸出...">Click "Run Demo" to see output...</div>
           </div>
           
           <div class="p-4 border-t border-pink-50">
             <button onclick="runOrderDemo()" class="w-full py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
-              <span>▶</span> Run Demo
+              <span>▶</span> <span data-en="Run Demo" data-zh="運行演示">Run Demo</span>
             </button>
           </div>
         </div>
@@ -137,43 +143,43 @@
         <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
           <div class="p-6 border-b border-pink-50">
             <div class="flex items justify-between mb-2">
-              <h3 class="text-xl font-bold">📊 Inventory Sync</h3>
-              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full">Inventory</span>
+              <h3 class="text-xl font-bold" data-en="📊 Inventory Sync" data-zh="📊 庫存同步">📊 Inventory Sync</h3>
+              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full" data-en="Inventory" data-zh="庫存">Inventory</span>
             </div>
-            <p class="text-gray-600 text-sm">Stock change → Sync all channels → Low stock alert → Reorder reminder</p>
+            <p class="text-gray-600 text-sm" data-en="Stock change → Sync all channels → Low stock alert → Reorder reminder" data-zh="庫存變動 → 同步所有渠道 → 低庫存警告 → 補貨提醒">Stock change → Sync all channels → Low stock alert → Reorder reminder</p>
           </div>
           
           <div class="p-6 bg-gradient-to-r from-pink-50 to-white">
             <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2" id="inventory-flow">
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-pink-200 bg-white" data-step="1">
                 <span class="text-2xl mb-1">🔄</span>
-                <span class="text-xs text-gray-600 text-center">Stock Update</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Stock Update" data-zh="庫存更新">Stock Update</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="2">
                 <span class="text-2xl mb-1">🌐</span>
-                <span class="text-xs text-gray-600 text-center">Sync Channels</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Sync Channels" data-zh="同步渠道">Sync Channels</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="3">
                 <span class="text-2xl mb-1">⚠️</span>
-                <span class="text-xs text-gray-600 text-center">Low Stock</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Low Stock" data-zh="低庫存">Low Stock</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="4">
                 <span class="text-2xl mb-1">📧</span>
-                <span class="text-xs text-gray-600 text-center">Alert Team</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Alert Team" data-zh="通知團隊">Alert Team</span>
               </div>
             </div>
           </div>
           
           <div class="p-4 bg-gray-900 demo-output text-green-400 min-h-[120px]" id="inventory-output">
-            <div class="text-gray-500">Click "Run Demo" to see output...</div>
+            <div class="text-gray-500" data-en="Click Run Demo to see output..." data-zh="點擊「運行演示」查看輸出...">Click "Run Demo" to see output...</div>
           </div>
           
           <div class="p-4 border-t border-pink-50">
             <button onclick="runInventoryDemo()" class="w-full py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
-              <span>▶</span> Run Demo
+              <span>▶</span> <span data-en="Run Demo" data-zh="運行演示">Run Demo</span>
             </button>
           </div>
         </div>
@@ -182,43 +188,43 @@
         <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
           <div class="p-6 border-b border-pink-50">
             <div class="flex items justify-between mb-2">
-              <h3 class="text-xl font-bold">💌 Customer Updates</h3>
-              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full">Customers</span>
+              <h3 class="text-xl font-bold" data-en="💌 Customer Updates" data-zh="💌 客戶通知">💌 Customer Updates</h3>
+              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full" data-en="Customers" data-zh="客戶">Customers</span>
             </div>
-            <p class="text-gray-600 text-sm">Order shipped → Auto email/SMS → Track delivery → Review request</p>
+            <p class="text-gray-600 text-sm" data-en="Order shipped → Auto email/SMS → Track delivery → Review request" data-zh="訂單已發貨 → 自動電郵/短信 → 追蹤配送 → 評價請求">Order shipped → Auto email/SMS → Track delivery → Review request</p>
           </div>
           
           <div class="p-6 bg-gradient-to-r from-pink-50 to-white">
             <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2" id="notify-flow">
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-pink-200 bg-white" data-step="1">
                 <span class="text-2xl mb-1">🚚</span>
-                <span class="text-xs text-gray-600 text-center">Shipped</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Shipped" data-zh="已發貨">Shipped</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="2">
                 <span class="text-2xl mb-1">📧</span>
-                <span class="text-xs text-gray-600 text-center">Email</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Email" data-zh="電郵">Email</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="3">
                 <span class="text-2xl mb-1">📱</span>
-                <span class="text-xs text-gray-600 text-center">SMS</span>
+                <span class="text-xs text-gray-600 text-center" data-en="SMS" data-zh="短信">SMS</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="4">
                 <span class="text-2xl mb-1">⭐</span>
-                <span class="text-xs text-gray-600 text-center">Review</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Review" data-zh="評價">Review</span>
               </div>
             </div>
           </div>
           
           <div class="p-4 bg-gray-900 demo-output text-green-400 min-h-[120px]" id="notify-output">
-            <div class="text-gray-500">Click "Run Demo" to see output...</div>
+            <div class="text-gray-500" data-en="Click Run Demo to see output..." data-zh="點擊「運行演示」查看輸出...">Click "Run Demo" to see output...</div>
           </div>
           
           <div class="p-4 border-t border-pink-50">
             <button onclick="runNotifyDemo()" class="w-full py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
-              <span>▶</span> Run Demo
+              <span>▶</span> <span data-en="Run Demo" data-zh="運行演示">Run Demo</span>
             </button>
           </div>
         </div>
@@ -227,43 +233,43 @@
         <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
           <div class="p-6 border-b border-pink-50">
             <div class="flex items justify-between mb-2">
-              <h3 class="text-xl font-bold">🏷️ Catalog Updates</h3>
-              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full">Products</span>
+              <h3 class="text-xl font-bold" data-en="🏷️ Catalog Updates" data-zh="🏷️ 產品目錄">🏷️ Catalog Updates</h3>
+              <span class="px-3 py-1 bg-pink-100 text-pink-600 text-xs font-semibold rounded-full" data-en="Products" data-zh="產品">Products</span>
             </div>
-            <p class="text-gray-600 text-sm">New product → Generate descriptions → Add to all channels → Announce</p>
+            <p class="text-gray-600 text-sm" data-en="New product → Generate descriptions → Add to all channels → Announce" data-zh="新產品 → 生成描述 → 添加到所有渠道 → 公告">New product → Generate descriptions → Add to all channels → Announce</p>
           </div>
           
           <div class="p-6 bg-gradient-to-r from-pink-50 to-white">
             <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2" id="catalog-flow">
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-pink-200 bg-white" data-step="1">
                 <span class="text-2xl mb-1">✨</span>
-                <span class="text-xs text-gray-600 text-center">New Product</span>
+                <span class="text-xs text-gray-600 text-center" data-en="New Product" data-zh="新產品">New Product</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="2">
                 <span class="text-2xl mb-1">🤖</span>
-                <span class="text-xs text-gray-600 text-center">AI Descriptions</span>
+                <span class="text-xs text-gray-600 text-center" data-en="AI Descriptions" data-zh="AI描述">AI Descriptions</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="3">
                 <span class="text-2xl mb-1">🔄</span>
-                <span class="text-xs text-gray-600 text-center">Sync All</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Sync All" data-zh="同步所有">Sync All</span>
               </div>
               <div class="w-8 h-0.5 flow-line flex-shrink-0"></div>
               <div class="workflow-node flex-shrink-0 flex flex-col items-center p-3 rounded-xl border-2 border-gray-200 bg-white" data-step="4">
                 <span class="text-2xl mb-1">📢</span>
-                <span class="text-xs text-gray-600 text-center">Announce</span>
+                <span class="text-xs text-gray-600 text-center" data-en="Announce" data-zh="公告">Announce</span>
               </div>
             </div>
           </div>
           
           <div class="p-4 bg-gray-900 demo-output text-green-400 min-h-[120px]" id="catalog-output">
-            <div class="text-gray-500">Click "Run Demo" to see output...</div>
+            <div class="text-gray-500" data-en="Click Run Demo to see output..." data-zh="點擊「運行演示」查看輸出...">Click "Run Demo" to see output...</div>
           </div>
           
           <div class="p-4 border-t border-pink-50">
             <button onclick="runCatalogDemo()" class="w-full py-3 bg-pink-500 text-white font-semibold rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
-              <span>▶</span> Run Demo
+              <span>▶</span> <span data-en="Run Demo" data-zh="運行演示">Run Demo</span>
             </button>
           </div>
         </div>
@@ -276,21 +282,48 @@
   <footer class="py-8 px-4 border-t border-pink-100 bg-gray-50">
     <div class="max-w-4xl mx-auto text-center text-gray-600 text-sm">
       <p class="font-semibold text-gray-900 mb-1">Choi Fung</p>
-      <p>Beauty • Health • Household Products</p>
+      <p data-en="Beauty • Health • Household Products" data-zh="美容 • 健康 • 家居用品">Beauty • Health • Household Products</p>
       <p class="mt-2">🌐 <a href="https://www.choi-fung.com" target="_blank" class="text-pink-600 hover:underline">www.choi-fung.com</a></p>
     </div>
   </footer>
 
   <script>
+    // Language switching
+    var currentLang = 'en';
+    
+    function setLang(lang) {
+      currentLang = lang;
+      
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Update all text content
+      document.querySelectorAll('[data-en][data-zh]').forEach(function(el) {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      
+      // Save preference
+      localStorage.setItem('lang', lang);
+    }
+    
+    // Load saved language
+    var savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+      setLang(savedLang);
+    }
+
     // Demo simulation functions
     async function animateFlow(flowId, steps) {
       const flow = document.getElementById(flowId);
       const nodes = flow.querySelectorAll('.workflow-node');
       
-      // Reset all nodes
       nodes.forEach(n => n.classList.remove('active'));
       
-      // Animate each step
       for (let i = 0; i < steps.length; i++) {
         nodes[i].classList.add('active');
         await sleep(800);
@@ -303,11 +336,33 @@
 
     async function runOrderDemo() {
       const output = document.getElementById('order-output');
-      output.innerHTML = '<span class="text-pink-400">🚀 Processing Order...</span>';
+      output.innerHTML = currentLang === 'zh' 
+        ? '<span class="text-pink-400">🚀 處理訂單中...</span>'
+        : '<span class="text-pink-400">🚀 Processing Order...</span>';
       
       await animateFlow('order-flow', [1,2,3,4]);
       
-      const demo = [
+      const demo = currentLang === 'zh' ? [
+        '<span class="text-gray-400">[10:23:15]</span> <span class="text-cyan-400">🛒 收到新訂單</span>',
+        '<span class="text-gray-400">[10:23:15]</span> <span class="text-white">訂單編號 #CF-2847</span>',
+        '<span class="text-gray-400">[10:23:15]</span> <span class="text-white">客戶：黃太</span>',
+        '<span class="text-gray-400">[10:23:15]</span> <span class="text-white">商品：</span>',
+        '<span class="text-gray-400">[10:23:15]</span> <span class="text-white">  - Biore UV 防曬乳 SPF50 x 3</span>',
+        '<span class="text-gray-400">[10:23:15]</span> <span class="text-white">  - DHC 深層潔顏油 x 2</span>',
+        '<span class="text-gray-400">[10:23:15]</span> <span class="text-white">  - 花王魔術清潔劑 x 1</span>',
+        '<span class="text-gray-400">[10:23:15]</span> <span class="text-green-400">✅ 總計：HK$468</span>',
+        '',
+        '<span class="text-gray-400">[10:23:16]</span> <span class="text-yellow-400">📋 檢查庫存...</span>',
+        '<span class="text-gray-400">[10:23:16]</span> <span class="text-green-400">✅ 所有商品有庫存</span>',
+        '',
+        '<span class="text-gray-400">[10:23:17]</span> <span class="text-purple-400">📄 生成發票...</span>',
+        '<span class="text-gray-400">[10:23:17]</span> <span class="text-green-400">✅ 發票 #INV-2847 已創建</span>',
+        '',
+        '<span class="text-gray-400">[10:23:18]</span> <span class="text-cyan-400">📦 通知倉庫...</span>',
+        '<span class="text-gray-400">[10:23:18]</span> <span class="text-green-400">✅ 揀貨清單已生成</span>',
+        '',
+        '<span class="text-pink-400">⏱️ 訂單處理完成：3秒</span>'
+      ] : [
         '<span class="text-gray-400">[10:23:15]</span> <span class="text-cyan-400">🛒 New order received</span>',
         '<span class="text-gray-400">[10:23:15]</span> <span class="text-white">Order #CF-2847</span>',
         '<span class="text-gray-400">[10:23:15]</span> <span class="text-white">Customer: Mrs. Wong</span>',
@@ -337,11 +392,33 @@
 
     async function runInventoryDemo() {
       const output = document.getElementById('inventory-output');
-      output.innerHTML = '<span class="text-pink-400">🚀 Syncing Inventory...</span>';
+      output.innerHTML = currentLang === 'zh'
+        ? '<span class="text-pink-400">🚀 同步庫存中...</span>'
+        : '<span class="text-pink-400">🚀 Syncing Inventory...</span>';
       
       await animateFlow('inventory-flow', [1,2,3,4]);
       
-      const demo = [
+      const demo = currentLang === 'zh' ? [
+        '<span class="text-gray-400">[14:00:00]</span> <span class="text-cyan-400">🔄 庫存更新觸發</span>',
+        '<span class="text-gray-400">[14:00:00]</span> <span class="text-white">商品：Biore UV 防曬乳 SPF50</span>',
+        '<span class="text-gray-400">[14:00:00]</span> <span class="text-white">變動：-15件 (訂單 #CF-2845)</span>',
+        '<span class="text-gray-400">[14:00:00]</span> <span class="text-white">剩餘：8件</span>',
+        '',
+        '<span class="text-gray-400">[14:00:01]</span> <span class="text-yellow-400">🌐 同步所有渠道...</span>',
+        '<span class="text-gray-400">[14:00:01]</span> <span class="text-green-400">✅ 已更新：網店</span>',
+        '<span class="text-gray-400">[14:00:01]</span> <span class="text-green-400">✅ 已更新：Shopee HK</span>',
+        '<span class="text-gray-400">[14:00:01]</span> <span class="text-green-400">✅ 已更新：HKTVmall</span>',
+        '<span class="text-gray-400">[14:00:01]</span> <span class="text-green-400">✅ 已更新：POS系統</span>',
+        '',
+        '<span class="text-gray-400">[14:00:02]</span> <span class="text-red-400">⚠️ 低庫存警告</span>',
+        '<span class="text-gray-400">[14:00:02]</span> <span class="text-white">Biore UV 防曬乳 SPF50</span>',
+        '<span class="text-gray-400">[14:00:02]</span> <span class="text-white">目前：8件 | 下限：20件</span>',
+        '',
+        '<span class="text-gray-400">[14:00:03]</span> <span class="text-cyan-400">📧 已發送警告給採購團隊</span>',
+        '<span class="text-gray-400">[14:00:03]</span> <span class="text-green-400">✅ 補貨提醒已創建</span>',
+        '',
+        '<span class="text-pink-400">⏱️ 同步完成：3秒</span>'
+      ] : [
         '<span class="text-gray-400">[14:00:00]</span> <span class="text-cyan-400">🔄 Stock update triggered</span>',
         '<span class="text-gray-400">[14:00:00]</span> <span class="text-white">Product: Kao Biore UV Aqua Rich SPF50</span>',
         '<span class="text-gray-400">[14:00:00]</span> <span class="text-white">Change: -15 units (Order #CF-2845)</span>',
@@ -371,11 +448,32 @@
 
     async function runNotifyDemo() {
       const output = document.getElementById('notify-output');
-      output.innerHTML = '<span class="text-pink-400">🚀 Sending Notifications...</span>';
+      output.innerHTML = currentLang === 'zh'
+        ? '<span class="text-pink-400">🚀 發送通知中...</span>'
+        : '<span class="text-pink-400">🚀 Sending Notifications...</span>';
       
       await animateFlow('notify-flow', [1,2,3,4]);
       
-      const demo = [
+      const demo = currentLang === 'zh' ? [
+        '<span class="text-gray-400">[16:45:00]</span> <span class="text-cyan-400">🚚 訂單 #CF-2847 已發貨</span>',
+        '<span class="text-gray-400">[16:45:00]</span> <span class="text-white">物流：順豐速運</span>',
+        '<span class="text-gray-400">[16:45:00]</span> <span class="text-white">追蹤編號：SF1234567890</span>',
+        '',
+        '<span class="text-gray-400">[16:45:01]</span> <span class="text-purple-400">📧 發送電郵...</span>',
+        '<span class="text-gray-400">[16:45:01]</span> <span class="text-green-400">✅ 電郵已發送至：mrswong@email.com</span>',
+        '',
+        '<span class="text-gray-400">[16:45:02]</span> <span class="text-yellow-400">📱 發送短信...</span>',
+        '<span class="text-gray-400">[16:45:02]</span> <span class="text-white">訊息：</span>',
+        '<span class="text-white">"Choi Fung：您的訂單 #CF-2847 已發貨。</span>',
+        '<span class="text-white">順豐物流：SF1234567890</span>',
+        '<span class="text-white">預計明日送達。"</span>',
+        '<span class="text-gray-400">[16:45:02]</span> <span class="text-green-400">✅ 短信已發送至 +852 9xxx-xxxx</span>',
+        '',
+        '<span class="text-gray-400">[16:45:03]</span> <span class="text-cyan-400">⭐ 評價請求已安排</span>',
+        '<span class="text-gray-400">[16:45:03]</span> <span class="text-white">將於送達後3天發送</span>',
+        '',
+        '<span class="text-pink-400">⏱️ 客戶通知完成：3秒</span>'
+      ] : [
         '<span class="text-gray-400">[16:45:00]</span> <span class="text-cyan-400">🚚 Order #CF-2847 shipped</span>',
         '<span class="text-gray-400">[16:45:00]</span> <span class="text-white">Carrier: SF Express</span>',
         '<span class="text-gray-400">[16:45:00]</span> <span class="text-white">Tracking: SF1234567890</span>',
@@ -404,11 +502,36 @@
 
     async function runCatalogDemo() {
       const output = document.getElementById('catalog-output');
-      output.innerHTML = '<span class="text-pink-400">🚀 Processing New Product...</span>';
+      output.innerHTML = currentLang === 'zh'
+        ? '<span class="text-pink-400">🚀 處理新產品...</span>'
+        : '<span class="text-pink-400">🚀 Processing New Product...</span>';
       
       await animateFlow('catalog-flow', [1,2,3,4]);
       
-      const demo = [
+      const demo = currentLang === 'zh' ? [
+        '<span class="text-gray-400">[11:30:00]</span> <span class="text-cyan-400">✨ 新產品已添加</span>',
+        '<span class="text-gray-400">[11:30:00]</span> <span class="text-white">SKU：KAO-BIORE-UV-2024</span>',
+        '<span class="text-gray-400">[11:30:00]</span> <span class="text-white">名稱：Biore UV 防曬乳 SPF50+ (新配方)</span>',
+        '<span class="text-gray-400">[11:30:00]</span> <span class="text-white">分類：美容 / 防曬</span>',
+        '',
+        '<span class="text-gray-400">[11:30:01]</span> <span class="text-purple-400">🤖 生成 AI 描述...</span>',
+        '<span class="text-gray-400">[11:30:01]</span> <span class="text-white">中文：「水感輕盈防曬乳液...」</span>',
+        '<span class="text-gray-400">[11:30:01]</span> <span class="text-white">EN: "Lightweight water-based sunscreen..."</span>',
+        '<span class="text-gray-400">[11:30:01]</span> <span class="text-green-400">✅ 描述已生成</span>',
+        '',
+        '<span class="text-gray-400">[11:30:02]</span> <span class="text-yellow-400">🔄 同步所有渠道...</span>',
+        '<span class="text-gray-400">[11:30:02]</span> <span class="text-green-400">✅ 網店</span>',
+        '<span class="text-gray-400">[11:30:02]</span> <span class="text-green-400">✅ Shopee HK</span>',
+        '<span class="text-gray-400">[11:30:02]</span> <span class="text-green-400">✅ HKTVmall</span>',
+        '<span class="text-gray-400">[11:30:02]</span> <span class="text-green-400">✅ Facebook Shop</span>',
+        '<span class="text-gray-400">[11:30:02]</span> <span class="text-green-400">✅ Instagram Shopping</span>',
+        '',
+        '<span class="text-gray-400">[11:30:03]</span> <span class="text-cyan-400">📢 創建公告...</span>',
+        '<span class="text-gray-400">[11:30:03]</span> <span class="text-green-400">✅ 已發布至 Facebook 專頁</span>',
+        '<span class="text-gray-400">[11:30:03]</span> <span class="text-green-400">✅ 已添加至首頁橫幅</span>',
+        '',
+        '<span class="text-pink-400">⏱️ 產品已上架：3秒</span>'
+      ] : [
         '<span class="text-gray-400">[11:30:00]</span> <span class="text-cyan-400">✨ New product added</span>',
         '<span class="text-gray-400">[11:30:00]</span> <span class="text-white">SKU: KAO-BIORE-UV-2024</span>',
         '<span class="text-gray-400">[11:30:00]</span> <span class="text-white">Name: Kao Biore UV Aqua Rich SPF50+ (New Formula)</span>',
